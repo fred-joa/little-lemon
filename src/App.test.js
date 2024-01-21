@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+ import { render, fireEvent, screen } from '@testing-library/react';
+import BookingTable from './components/booking-table/BookingTable';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('Adds one', () => {
+  //Render the app component
+  render(<BookingTable />);
+
+  //save the headin in a variable
+  const heading = screen.getByText("Book Now");
+  expect(heading).toBeInTheDocument();
 });

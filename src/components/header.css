@@ -3,8 +3,7 @@
     line-height: 1.5;
     position: relative;
     color: #fff;
-    z-index: -1;
-    margin-bottom: 4rem;
+    /* margin-bottom: 4rem; */
     
 }
 
@@ -46,7 +45,6 @@
 .btn-link{
     margin-top: 16px;
     border: 0;
-    padding: 10px 15px;
     background-color: #F4CE14;
     color: #000;
     border-radius: 16px;
@@ -54,8 +52,15 @@
     letter-spacing: 0.6px;
     font-size: 16px;
 }
-
-
+.btn-link a{
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000;
+}
+.btn-link:hover{
+    background-color: #ffdf40;
+}
 .padding-space{
     padding: 2rem 10rem;
 }

@@ -1,3 +1,9 @@
+:root{
+  --color-bg: #495E57;
+  --color-text: #F4CE14;
+}
+
+
 .App {
   text-align: center;
 }
@@ -38,4 +44,28 @@
 }
 
 
+.padding_section{
+  padding: 1rem 8rem;
+}
+@media screen and (max-width:1200) {
+  .padding_section{
+    padding: 2rem 6rem;
+  }
+}
+@media screen and (max-width: 990px){
+  .padding_section{
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .padding_section{
+    padding: 1rem;
+  }
+}
+@media screen and (max-width:550px){
+  .padding_section{
+    padding: 0.5rem;
+  }
+}
 
