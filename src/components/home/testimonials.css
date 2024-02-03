@@ -1,75 +1,140 @@
 .testimonials{
-   /*  margin: 15px 10rem; */
-   background-color: #495E57;
+    background-color: var(--color-bg);
+    margin-bottom: 5rem;
+    padding-top: 2rem;
 }
 .testimonials h2{
-    font-size: 40px;
-    font-weight: 500;
+    padding-bottom: 20px;
     text-align: center;
-    padding-bottom:2rem ;
-    color: #F4CE14;
-}
-.testimonials-container{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-
-/* Card */
-.testimonial{
-    width: 200px;
-    background-color: #fff;
-    padding: 0.5rem;
-    color: #000000;
-    font-size: 14px;
-    margin-bottom: 10px ;
-}
-
-.testimonial-rating{
-    margin-bottom: 10px;
-    color: #495E57;
+    color: var(--color-text);
 }
 .star-color{
     color: #f4ce14;
 }
-.testimonial-perfil{
+.testimonials-container{
     display: flex;
-    align-items: center;
+    flex-direction: row;
     gap: 10px;
-    margin-bottom: 10px;
+    padding-bottom: 2rem;
 }
-.testimonial-perfil img{
-    width: 50px;
-    /* border-radius: 50%; */
+.testimonial{
+    padding: 10px;
+    letter-spacing: 0.5px;
+    flex: 1;
+    display: grid;
+    grid: 25px 100px auto / 100px auto auto;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #fff;
 }
-.testimonial-perfil p{
-   font-size: 14px;
+
+
+
+.testimonial-rating{
+    grid-column: 1 / 4;
+    /* grid-column-start: 1;
+    grid-column-end: 4; */
+    /* border: 1px solid blue; */
+}
+.testimonial-image{
+    grid-column: 1 / 2;
+   /*  grid-column-start: 1;
+    grid-column-end: 2; */
+    border: 1px solid #495E57;
+    overflow: hidden;
+}
+.testimonial-image img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    /* border: 1px solid #01d3d3; */
+}
+.testimonial-name{
+    font-weight: 600;
+    grid-column: 2 / 4;
+    text-align: start;
+   
+    /* grid-column-start: 2;
+    grid-column-end: 4; */
+    /* border: 1px solid black; */
 }
 .testimonial-review{
-    line-height: 1.5;
-    font-size: 14px;
+    padding-top: 5px;
+    grid-column: 1 / 4;
+    /* grid-column-start: 1;
+    grid-column-end: 4; */
+    /* border: 1px solid greenyellow; */
 }
 
-@media screen and (max-width: 1200px){
-    
+
+
+@media screen and (max-width: 850px){
+    .testimonial{
+        grid: 25px 50px auto / 50px auto auto;
+        /* border: 1px solid red; */
+    }
+    .testimonial-image img{
+        width: 50px;
+        height: 50px;
+        
+    }
+
+  }
+  @media screen and (max-width: 600px){
+    .testimonials-container{
+        flex-direction: column;
+    }
+    .testimonial{
+        font-size: 12px;
+        grid: 20px 20px 35px / 55px auto auto;
+    }
+    .testimonial-image{
+        grid-column: 1 / 2;
+        grid-row: 2 / 4;
+        text-align: start;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    .testimonial-name{
+        padding-left: 5px ;
+        grid-column: 2 / 4;
+        grid-row: 2 / 3;
+        text-align: start;
+    }
+    .testimonial-review{
+        padding-left: 5px;
+        grid-column: 2 / 4;
+        grid-row: 3 / 4;
+    }
+  }
+/* .mary{
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    width: 720px;
+    height: 350px;
+    margin: 10rem auto;
+    text-align: center;
+    background-image: url('../../assets/corazon2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 220px;
+    transition: background-size 1s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.2);    
+    border-radius: 40px;
 }
-@media screen and (max-width: 1050px){
+.mary h1{
+    width: 100%;
+    font-size: 40px;
+    transition: font-size 3s;
    
 }
-
-@media screen and (max-width: 992px){
-    
+.mary:hover{
+    background-image: url('../../assets/corazon2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 420px;
 }
-@media screen and (max-width: 768px){
-    
-    
-}
-@media screen and (max-width:550px){
-    .testimonial{
-        width: 49%;
-    }
-    .testimonials h2{
-        padding-bottom:2rem ;
-    }
-}
+.mary p {
+    padding: 2rem 0;
+    font-family:'Times New Roman', Times, serif;
+} */

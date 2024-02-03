@@ -1,21 +1,9 @@
 import React from 'react';
 import './specials.css';
-import greek from '../../img/greek salad.jpg';
-import brushetta from '../../img/bruchetta.svg';
-import lemon from  '../../img/lemon dessert.jpg'
-import { MdOutlineDeliveryDining } from "react-icons/md";
+import { Link } from 'react-router-dom';
+import { specialFoods } from '../../utils/data'
 
-let specialFoods=[
-  {title:"Greek Salada", picture:greek, price:"$ 12", description:"The famous greek salad of crispy lettuce, peppers, olives and our "},
-  {title:"Brushetta", picture:brushetta, price:"$ 15", description:"The famous greek salad of crispy lettuce, peppers, olives and our "},
-  {title:"Lemon Dessert", picture:lemon, price:"$ 25", description:"Use the order property to sort the flex items as you like: lettuce, peppers, olives and our"}
-];
-
-/* Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. Toppings of tomato, veggies, beans, cured pork, or cheese are examples of variations. In Italy, a brustolina grill is frequently used to create bruschetta. */
-
-
-
-const Special = ({title,picture,price,description,})=>{
+const Special = ({title,picture,price,description,}) => {
   return (
     <div className='card' >
       <div className='card-image'>
@@ -27,20 +15,20 @@ const Special = ({title,picture,price,description,})=>{
           <p className='card-content__price'>{price}</p>
         </div>
         <p className='card-content__description'>{description}</p>
-        <button className='card-content__btn' type='button'>Order a delivery  <MdOutlineDeliveryDining size={27} /> </button>
+      </div>
+      <div className='card-orderDelivery'>
+        <Link to="/online-menu">Order a delivery</Link>
       </div>
     </div>
   )
 }
-
-
 const Specials = () => {
 
   return (
-    <div id='specials' className='padding-space'>
+    <div id='specials' className='padding-sides'>
       <div className='specials-header'>
         <h2>This week Specials !</h2>
-        <button className='btn' type='button'>Online Menu</button>
+        <button className='btn-link' type='button'><Link to="/online-menu">Online Menu</Link></button>
       </div>
       <div className='special-container'>
         {

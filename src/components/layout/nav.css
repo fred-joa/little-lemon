@@ -1,0 +1,122 @@
+nav{
+    background-color: #fff;
+    width: 100%;
+    
+}
+/*Links*/
+.container-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.container-links .link a{
+    display: block;
+    font-size: 16px;
+    padding: 1rem;
+    color: #4b4b4b;
+    font-weight: 500;
+}
+.container-links .link:last-child a{
+    padding-right: 0;
+}
+.container-links .link a:hover{
+    color: #000;
+    
+
+}
+.container-links .link a:active{
+    text-decoration:underline;
+    text-decoration-color: var(--color-bg);
+}
+
+/*Large screeen*/
+.nav-large{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/*basket*/
+.basket{
+    width: 27px;
+}
+/*Logo*/
+.nav-large__logo img{
+  height: 35px;
+}
+
+/*Small screen*/
+.nav-small, .nav-small-fixed{
+    display: none;
+}
+
+
+  @media screen and (max-width:1200px) {
+    .container-links .link a{
+        padding: 1rem 0.5rem;
+    }
+  }
+  @media screen and (max-width: 990px){
+
+  }
+  @media screen and (max-width: 768px){
+    .nav-large{
+        display: none;
+    }
+    /*Small screen */
+    .container-links{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-links .link a{
+        display: block;
+        padding: 1rem 2rem;
+    }
+    .nav-small-fixed{
+        display: block;
+        position: fixed;
+        inset: 0;
+        background-color: #fff;
+        z-index: 5;
+      }
+    .nav-small{
+        display: block;
+    }
+    .nav-small__header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .nav-small__menu{
+        /* position: fixed;
+        right: 0; */
+        width: 100%;
+        
+    }
+    .nav-small__menu .container-links{
+        min-height: 90vh;
+    }
+    .nav-small__menu .link{
+        width: 100%;
+        text-align: center;
+    }
+    .nav-small__menu .link a{
+        padding: 0.5rem 0;
+        
+    }
+    .nav-small__menu .link a:hover{
+        background-color: var(--color-bg);
+    }
+    .nav-small__menu .link:last-child{
+        display: none;
+    }
+  }
+  @media screen and (max-width:550px){
+    
+  }
+  

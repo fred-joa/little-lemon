@@ -1,0 +1,28 @@
+.puntos{
+    display: flex;
+    justify-content: space-around;
+    /* 
+    display: flex;
+    justify-content: space-around; */
+}
+.punto{
+    height: 12px;
+    width: 12px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    background-color: var(--color-bg);
+    z-index: 2;
+}
+.active{
+    background-color: #fff;
+}
+.lineContainer{
+    position: relative;
+}
+.lineCross{
+    width: 100%;
+    background-color: #fff;
+    height: 1px;
+    position: absolute;
+    top: -6px;
+}

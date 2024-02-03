@@ -1,33 +1,23 @@
-import React from 'react';
-import './chicago.css';
-import picture1 from '../../img/Mario and Adrian A.jpg';
-import picture2 from '../../img/Mario and Adrian b.jpg';
-
+import React from 'react'
+import './chicago.css'
+import {chicago} from '../../utils/data'
 
 const Chicago = () => {
+  const {title,address,description,pictures} = chicago;
   return (
     <section>
-      <div className='chicago padding-space'>
-        <div className='chicago-content'>
-          <h2 className='chicago-content-title'>Little Lemon</h2>
-          <p className='chicago-content-subtitle'>Chicago</p>
-          <p className='chicago-content-description'>We are a family owned
-            Mediterranean restaurant,
-            focused on traditional
-            recipes served with a modern
-            twist. We are a family owned
-            Mediterranean restaurant,
-            focused on traditional
-            recipes served with a modern
-            twist.</p>
+      <div className='chicago padding-sides'>
+        <div className='chicago-text'>
+          <h2 className='chicago-text__title'>{title}</h2>
+          <h3 className='chicago-text__subtitle'>{address}</h3>
+          <p className='chicago-text__description'>{description}</p>
         </div>
         <div className='chicago-pictures'>
-          <div className='img-1'><img src={picture1} alt='1'></img></div>
-          <div className='img-2'><img src={picture2} alt='2'></img></div>
+          <div className='img-1'><img src={pictures.img1} alt='1'></img></div>
+          <div className='img-2'><img src={pictures.img2} alt='2'></img></div>
         </div>
       </div>
     </section>
-    
   )
 }
 

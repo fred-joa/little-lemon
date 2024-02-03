@@ -1,71 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,500;1,500&display=swap');
 :root{
-  --color-bg: #495E57;
-  --color-text: #F4CE14;
+    --color-bg: #495E57;
+    --color-text: #F4CE14;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
 }
 
-
-.App {
-  text-align: center;
+#root{
+  max-width: 1400px;
+  margin: auto;
+}
+a{
+  text-decoration: none;
+  color: #000;
+}
+li {
+  list-style: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn-link{
+  border: 0;
+  border-radius: 16px;
+  background-color: #F4CE14;
+}
+.btn-link a{
+  display: block;
+  padding: 10px 15px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.padding-sides{
+    padding: 0 7rem;
+}
+
+  @media screen and (max-width:1200px) {
+    .padding-sides{
+      padding-left:  5rem;
+      padding-right: 5rem;
+    }
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  @media screen and (max-width: 1024px){
+    .padding-sides{
+      padding-left:  4rem;
+      padding-right: 4rem;
+    }
   }
-  to {
-    transform: rotate(360deg);
+  @media screen and (max-width: 991px){
+    .padding-sides{
+      padding-left:  2rem;
+      padding-right: 2rem;
+    }
   }
-}
-
-
-.padding_section{
-  padding: 1rem 8rem;
-}
-@media screen and (max-width:1200) {
-  .padding_section{
-    padding: 2rem 6rem;
+  @media screen and (max-width: 850px){
+    .padding-sides{
+      padding-left:  1rem;
+      padding-right: 1rem;
+    }
   }
-}
-@media screen and (max-width: 990px){
-  .padding_section{
-    padding: 1.5rem 2rem;
+  @media screen and (max-width: 768px){
+    .padding-sides{
+      padding-left:  1rem;
+      padding-right: 1rem;
+    }
   }
-}
-
-@media screen and (max-width: 768px){
-  .padding_section{
-    padding: 1rem;
+  @media screen and (max-width:550px){
+    .padding-sides{
+      padding-left:  0.5rem;
+      padding-right: 0.5rem;
+    }
   }
-}
-@media screen and (max-width:550px){
-  .padding_section{
-    padding: 0.5rem;
-  }
-}
-
+  
