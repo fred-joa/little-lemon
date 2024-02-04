@@ -14,7 +14,7 @@ describe("Booking Component",()=>{
         expect(heading).toBeInTheDocument();
     });
 /*-----TEST # 2-----*/
-    test("Check if the errors display when it is required",()=>{
+    test("Check if the errors is displayed when submit the form",()=>{
         render(<BookingFormCopy/>);
         const buttoElement= screen.getByRole("button");
         act(()=>{

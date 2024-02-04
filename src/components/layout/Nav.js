@@ -14,7 +14,7 @@ const Menu = (props)=>{
             <li className='link'> <Link to="/reservations" onClick={()=>props.setToggleMenu(false)}>Reservations</Link></li>
             <li className='link'> <Link to="/order-online" onClick={()=>props.setToggleMenu(false)}>Order Online</Link></li>
             <li className='link'> <Link to="/login" onClick={()=>props.setToggleMenu(false)}>Login</Link></li>
-            <li className='link'><Link><img className='basket' src={basket}></img></Link></li>
+            <li className='link'><Link><img alt='basket' className='basket' src={basket}></img></Link></li>
         </ul>
     );
 }
@@ -42,10 +42,10 @@ const Nav = () => {
                     }
                 </div>
                 <div className='nav-small__header-logo'>
-                    <Link to="/" ><img src={logo}></img></Link>
+                    <Link to="/" ><img alt='logo' src={logo}></img></Link>
                 </div>
                 <div>
-                    <Link><img className='basket' src={basket}></img></Link>
+                    <Link><img alt='basket' className='basket' src={basket}></img></Link>
                 </div>
             </div>
             <div className='nav-small__menu'>
@@ -57,7 +57,7 @@ const Nav = () => {
         </div>
         <div className='nav-large'>
             <div className='nav-large__logo'>
-                <Link to="/" ><img src={logo}></img></Link>
+                <Link to="/" ><img alt='logo' src={logo}></img></Link>
             </div>
             <div className='nav-large__menu'>
                 <Menu/>

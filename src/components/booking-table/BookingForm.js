@@ -1,10 +1,14 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './bookingForm.css';
 import { validateDate, occasions, validateNumberGuests } from '../../utils/data';
 import LineProcess from '../../utils/LineProcess';
 
 const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
+    //UseRef to focus the inputs
+    const timeRef = useRef(null);
+    const guestsRef = useRef(null);
+    const occasionRef = useRef(null);
 
 
     //extra
@@ -13,14 +17,13 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
     const placeHolderGuests = 'Please enter a number "1-10"';
     const [errorDate, setErrorDate]=  useState("");
     const [errorTime, setErrorTime] = useState("");
-    const [errorOccasion, setErrorOccasion] = useState("");
+    const [errorOccasion, setErrorOccasion] = useState(""); 
     const [errorGuests, setErrorGuests] = useState("");
 
     const [dateOk, setDateOk]= useState(false)
     const [timeOk, setTimeOk] = useState(false);
     const [occasionOk, setOccasionOk] =  useState(false);
     const [guestsOk, setGuestsOk] = useState(false);
-    const [disableSubmit, setDisableSubmit] = useState(true);
 
 
 
@@ -29,7 +32,7 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
     //States from component BookingForm
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
-    const [guests, setGuests] = useState(0);
+    const [guests, setGuests] = useState('');
     const [occasion, setOccasion] = useState("");
 
     //Validation form
@@ -74,7 +77,7 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
             if(submitForm(formData) === true){
                 setDate("");
                 setTime("");
-                setGuests(0);
+                setGuests('');
                 setOccasion("");
                 e.preventDefault();
             }
@@ -96,17 +99,26 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
         return result;
       }
 
+      //check enter keyboard change focus
+      const checkPress = (e)=>{
+        console.log(guestsRef.current.value);
+        if(e.keyCode === 13){
+            if(guestsRef.current.value > 0 && guestsRef.current.value <= 10){
+                occasionRef.current.focus();
+            }
+        }
+      }
 
   return (
-    <form className='booking-form padding-sides' onSubmit={handleSubmit}>
+    <form className='booking-form padding-sides' onSubmit={handleSubmit} >
         <LineProcess point={1}></LineProcess>
         <div className='container-form'>
             <h2>Book your table Now!</h2>
             <p className='msg-required'>Fields with * are required </p>
             <div className='booking-form__field'>
-                <label className='label' htmlFor="res-date">Choose date <span className=''>*</span></label>
+                <label className='label' htmlFor="date">Choose date <span className=''>*</span></label>
                 <div className='booking-form__input'>
-                <input className='input' name='date' type="date" value={date} data-testid="select-date" onChange={(e)=>{
+                <input className='input'  autoFocus name='date' type="date" id='date' value={date} data-testid="select-date" onChange={(e)=>{
 
                 if(!validateDate(e.target.value)){
                     setDate("");
@@ -116,8 +128,9 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
                     setErrorDate("");
                     setDateOk(true);
                     setDate(e.target.value);
-                    setAvailableTimes(e.target.value); 
+                    setAvailableTimes(e.target.value);
                     /* fullDataLoaded(); */
+                    timeRef.current.focus();
                 }
 
                 }
@@ -128,9 +141,9 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
                 </div>
             </div>
             <div className='booking-form__field'>
-                <label className='label' htmlFor="res-time">Choose time <span className=''> *</span></label>
+                <label className='label' htmlFor="time">Choose time <span className=''> *</span></label>
                 <div className='booking-form__input'>
-                    <select className='input' name='time'  data-testid="select-time" onChange={(e)=>{
+                    <select className='input' ref={timeRef} name='time' id='time'  data-testid="select-time" onChange={(e)=>{
                         if(e.target.value === "" || e.target.value === placeholderTime){
                             setTimeOk(false);
                             setTime("");
@@ -141,8 +154,8 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
                             setErrorTime("");
                             setTime(e.target.value);
                             /* fullDataLoaded(); */
+                            guestsRef.current.focus();
                         }
-                        
                         }} required >
                         <option key="time">{placeholderTime}</option>
                         { availableTimes && availableTimes.length > 0 && (
@@ -160,7 +173,9 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
             <div className='booking-form__field'>
                 <label className='label' htmlFor="guests">Number of guests (1-10) <span className=''> *</span></label>
                 <div className='booking-form__input'>
-                    <input className='input' type="number" placeholder="0" value={guests} min={1} max={10}  id="guests" onChange={(e)=>{
+                    <input className='input' ref={guestsRef}  onKeyDown={(e)=>{
+                        checkPress(e);
+                    }} type="number" placeholder="0"  min={1} max={10}  id="guests" onChange={(e)=>{
 
                         if(!validateNumberGuests(e.target.value)){
                             setGuestsOk(false);
@@ -170,7 +185,7 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
                         else{
                             setGuestsOk(true);
                             setErrorGuests("");
-                            setGuests(e.target.value.trim());
+                            setGuests(e.target.value);
                             /* fullDataLoaded(); */
                         }
                         }} required/>
@@ -181,7 +196,7 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
             <div className='booking-form__field'>
                 <label className='label' htmlFor="occasion">Occasion <span className=''> *</span></label>
                 <div className='booking-form__input'>
-                    <select className='input' id="occasion" onChange={(e)=>{
+                    <select className='input' ref={occasionRef} id="occasion" onChange={(e)=>{
 
                         if(e.target.value === "" || e.target.value === placeholderOccasion){
                             setOccasionOk(false);
@@ -191,10 +206,9 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
                             setOccasionOk(true);
                             setErrorOccasion("")
                             setOccasion(e.target.value);
-                           /*  fullDataLoaded(); */
                         }
 
-                    }} required>
+                    }} required onSelect={()=>{validateForm()}}>
                         <option  key="occasion">{placeholderOccasion}</option>
                         {
                             occasions.map((item)=>{
@@ -206,7 +220,7 @@ const BookingForm = ({setAvailableTimes, availableTimes, submitForm}) => {
                 </div>
             </div>
             <div className='booking-form__submit'>
-                <button className="btn-link" disabled={fullDataLoaded()? false:true} type="submit" >Make Your reservation</button>
+                <button  className="btn-link" aria-label="Submit" disabled={fullDataLoaded()? false:true} type="submit" >Make Your reservation</button>
             </div>
         </div>
     </form>
